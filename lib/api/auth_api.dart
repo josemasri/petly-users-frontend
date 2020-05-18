@@ -11,16 +11,30 @@ import '../utils/session.dart';
 class AuthAPI {
   final _session = Session();
 
-  Future<bool> register(BuildContext context,
-      {@required String username,
-      @required String email,
-      @required String password}) async {
+  Future<bool> register(
+    BuildContext context, {
+    @required String firstName,
+    @required String lastName,
+    @required String email,
+    @required String password,
+    @required String country,
+    @required String state,
+    @required String county,
+  }) async {
     try {
       final url = "${AppConfig.apiHost}/auth/register";
 
       final response = await http.post(
         url,
-        body: {"username": username, "email": email, "password": password},
+        body: {
+          "firstName": firstName,
+          "lastName": lastName,
+          "email": email,
+          "password": password,
+          "country": country,
+          "state": state,
+          "county": county
+        },
       );
 
       final parsed = jsonDecode(response.body);
@@ -33,7 +47,6 @@ class AuthAPI {
       } else if (response.statusCode == 500) {
         throw PlatformException(code: "500", message: parsed['message']);
       }
-
       throw PlatformException(code: "201", message: "Error /register");
     } on PlatformException catch (e) {
       Dialogs.alert(context, title: "ERROR", message: e.message);
@@ -69,11 +82,12 @@ class AuthAPI {
     try {
       final url = "${AppConfig.apiHost}/auth/refresh";
 
-      final response = await http.put(url, headers: {"authorization": 'Bearer $expiredToken'});
+      final response =
+          await http.put(url, headers: {"token": 'Bearer $expiredToken'});
 
       final parsed = jsonDecode(response.body);
 
-      if (response.statusCode == 201) {
+      if (response.statusCode == 200) {
         return parsed;
       } else if (response.statusCode == 401) {
         throw PlatformException(code: "500", message: parsed['message']);
@@ -89,7 +103,7 @@ class AuthAPI {
     try {
       final result = await _session.get();
       if (result != null) {
-        final token = result['token'] as String;
+        final token = result['accessToken'] as String;
         final expiresIn = result['expiresIn'] as int;
         final createdAt = DateTime.parse(result['createdAt']);
         final currentDate = DateTime.now();
@@ -103,7 +117,7 @@ class AuthAPI {
 
         final newData = await _refreshToken(token);
         if (newData != null) {
-          final newToken = newData['token'];
+          final newToken = newData['accessToken'];
           final newExpiresIn = newData['expiresIn'];
           await _session.set(newToken, newExpiresIn);
           return newToken;

@@ -39,12 +39,12 @@ class InterestedPage extends StatelessWidget {
                         ),
                         child: ListTile(
                           leading: CircleAvatar(
-                            backgroundImage: NetworkImage(pet.image),
+                            backgroundImage: NetworkImage(pet.imageUrl),
                           ),
                           title: Text(pet.name),
-                          subtitle: Text(pet.owner.city),
+                          subtitle: Text(pet.userCounty),
                           trailing: Text(
-                            'Dueño: ${pet.owner.name}',
+                            'Dueño: ${pet.name}',
                             style: TextStyle(color: Colors.grey),
                           ),
                           onTap: () {

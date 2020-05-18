@@ -102,12 +102,12 @@ class PetDetailsPage extends StatelessWidget {
                         SizedBox(height: 5),
                         _PetAttribute(
                           icon: FontAwesomeIcons.userTie,
-                          value: pet.owner.name,
+                          value: pet.userFirstName,
                         ),
                         SizedBox(height: 5),
                         _PetAttribute(
                           icon: FontAwesomeIcons.building,
-                          value: pet.owner.city,
+                          value: pet.userCounty,
                         ),
                         SizedBox(height: 100),
                       ],

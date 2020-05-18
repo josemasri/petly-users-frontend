@@ -7,7 +7,7 @@ import 'package:fluttersecretchat/models/message.dart';
 class Chat extends StatefulWidget {
   final int userId;
   final List<Message> messages;
-  final Function(String) onSend;
+  final Function(String, int) onSend;
 
   const Chat(this.userId,
       {Key key, this.messages = const [], @required this.onSend})
@@ -37,7 +37,7 @@ class ChatState extends State<Chat> {
     }
 
     if (widget.onSend != null) {
-      widget.onSend(text);
+      widget.onSend(text, 1);
     }
     _controller.text = '';
   }
@@ -86,7 +86,7 @@ class ChatState extends State<Chat> {
                       ? SizedBox(width: 0)
                       : Padding(
                           child: Text(
-                            "@${message.username}",
+                            "@${message.email}",
                             style: TextStyle(fontSize: 12),
                           ),
                           padding: EdgeInsets.only(bottom: 5),

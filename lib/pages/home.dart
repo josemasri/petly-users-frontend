@@ -10,7 +10,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final petsProvider = Provider.of<PetsProvider>(context);
-    final interestedProvider = Provider.of<InterestedProvider>(context);
+    final interestedProvider = Provider.of<InterestedProvider>(context);   
 
     final petCards = petsProvider.pets.map((pet) {
       return CustomCard(

@@ -40,7 +40,8 @@ class _ChatPageState extends State<ChatPage> {
       final message = Message(
         id: data['from']['id'],
         message: data['message'],
-        username: data['from']['username'],
+        email: data['from']['email'],
+        petId: data['from']['petId'],
         createdAt: DateTime.now(),
       );
       _chat.addMessage(message);
@@ -75,13 +76,15 @@ class _ChatPageState extends State<ChatPage> {
     });
   }
 
-  _sendMessage(String text) {
+  _sendMessage(String text, int petId) {
     Message message = Message(
-        id: _me.data.id,
-        username: _me.data.username,
-        message: text,
-        type: 'text',
-        createdAt: DateTime.now());
+      id: _me.data.id,
+      petId: petId,
+      email: _me.data.email,
+      message: text,
+      type: 'text',
+      createdAt: DateTime.now(),
+    );
 
     _socketClient.emit('send', text);
 

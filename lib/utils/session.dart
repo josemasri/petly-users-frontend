@@ -7,7 +7,7 @@ class Session {
 
   set(String token, int expiresIn) async {
     final data = {
-      "token": token,
+      "accessToken": token,
       "expiresIn": expiresIn,
       "createdAt": DateTime.now().toString()
     };

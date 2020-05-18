@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttersecretchat/pages/add_pet.dart';
 import 'package:fluttersecretchat/pages/interested.dart';
 import 'package:fluttersecretchat/pages/pet_details.dart';
 import 'package:fluttersecretchat/providers/interested_provider.dart';
@@ -18,7 +19,6 @@ import 'providers/chat_provider.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
@@ -44,8 +44,9 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           primarySwatch: Colors.blue,
+          primaryColor: Colors.orange,
         ),
-        initialRoute: 'home',
+        initialRoute: 'splash',
         routes: {
           'splash': (context) => SplashPage(),
           'login': (context) => LoginPage(),
@@ -54,6 +55,7 @@ class MyApp extends StatelessWidget {
           'chat': (context) => ChatPage(),
           'pet-details': (context) => PetDetailsPage(),
           'interested': (context) => InterestedPage(),
+          'add-pet': (context) => AddPetPage(),
         },
       ),
     );

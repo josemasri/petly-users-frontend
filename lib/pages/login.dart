@@ -91,6 +91,7 @@ class _LoginPageState extends State<LoginPage> {
                               height: responsive.wp(20),
                               margin: EdgeInsets.only(top: size.width * 0.3),
                               decoration: BoxDecoration(
+                                image: DecorationImage(image: AssetImage('assets/img/logo.jpeg')),
                                   color: Colors.white,
                                   borderRadius: BorderRadius.circular(15),
                                   boxShadow: [
@@ -103,8 +104,9 @@ class _LoginPageState extends State<LoginPage> {
                               "Hello again.\nWelcome back",
                               textAlign: TextAlign.center,
                               style: TextStyle(
-                                  fontSize: responsive.ip(2),
-                                  fontWeight: FontWeight.w300),
+                                fontSize: responsive.ip(2),
+                                fontWeight: FontWeight.w300,
+                              ),
                             )
                           ],
                         ),
@@ -122,6 +124,7 @@ class _LoginPageState extends State<LoginPage> {
                                       InputText(
                                           label: "EMAIL ADDRESS",
                                           inputType: TextInputType.emailAddress,
+                                          icon: Icons.alternate_email,
                                           fontSize: responsive.ip(1.8),
                                           validator: (String text) {
                                             if (text.contains("@")) {
@@ -132,6 +135,7 @@ class _LoginPageState extends State<LoginPage> {
                                           }),
                                       SizedBox(height: responsive.hp(3)),
                                       InputText(
+                                        icon: Icons.lock,
                                         label: "PASSWORD",
                                         isSecure: true,
                                         fontSize: responsive.ip(1.8),
@@ -156,7 +160,7 @@ class _LoginPageState extends State<LoginPage> {
                               child: CupertinoButton(
                                 padding: EdgeInsets.symmetric(
                                     vertical: responsive.ip(2)),
-                                color: Colors.pinkAccent,
+                                color: Colors.orange,
                                 borderRadius: BorderRadius.circular(4),
                                 onPressed: () => _submit(),
                                 child: Text("Sign in",
@@ -168,7 +172,7 @@ class _LoginPageState extends State<LoginPage> {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: <Widget>[
-                                Text("New to Friendly Desi?",
+                                Text("New to Petly?",
                                     style: TextStyle(
                                         fontSize: responsive.ip(1.8),
                                         color: Colors.black54)),
@@ -178,7 +182,7 @@ class _LoginPageState extends State<LoginPage> {
                                   child: Text("Sign Up",
                                       style: TextStyle(
                                           fontSize: responsive.ip(1.8),
-                                          color: Colors.pinkAccent)),
+                                          color: Colors.orange)),
                                 )
                               ],
                             ),

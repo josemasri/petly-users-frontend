@@ -4,6 +4,7 @@ import '../models/user.dart';
 
 class Me extends ChangeNotifier {
   User _data;
+  String token;
 
   User get data => _data;
 

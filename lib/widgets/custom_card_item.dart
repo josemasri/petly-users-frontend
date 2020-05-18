@@ -30,7 +30,7 @@ class CustomCardItem extends StatelessWidget {
                   child: FadeInImage(
                     fit: BoxFit.cover,
                     placeholder: AssetImage('assets/img/loading.gif'),
-                    image: NetworkImage(pet.image),
+                    image: NetworkImage(pet.imageUrl),
                   ),
                 ),
               ),
@@ -74,7 +74,7 @@ class CustomCardItem extends StatelessWidget {
                                 ),
                                 SizedBox(width: 5),
                                 Text(
-                                  pet.owner.city,
+                                  pet.userCounty,
                                   style: TextStyle(color: Colors.white),
                                 ),
                               ],

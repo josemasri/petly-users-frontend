@@ -39,7 +39,7 @@ class CustomTopBar extends StatelessWidget {
               if (_topBarProvider.currentRoute != 1) {
                 _topBarProvider.currentRoute = 1;
                 Navigator.pushNamedAndRemoveUntil(
-                    context, 'home', (_) => false);
+                    context, 'add-pet', (_) => false);
               }
             },
           ),

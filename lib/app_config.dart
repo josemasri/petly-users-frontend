@@ -1,4 +1,5 @@
 class AppConfig{
-  static const apiHost="http://10.0.2.2:3000";
-  static const socketHost="http://10.0.2.2:3000";
+  static const apiHost="https://petly.herokuapp.com";
+  static const socketHost="https://petly.herokuapp.com";
+  static const apiLocationUrl = 'nominatim.openstreetmap.org';
 }
